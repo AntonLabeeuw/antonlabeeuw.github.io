@@ -72,29 +72,41 @@ const placeSunAndStartMoving = (totalMinutes, sunrise) => {
 const showResult = (queryResponse) => {
     console.log(queryResponse);
 
-    let celcius = (parseInt(queryResponse.main.temp) / 273.15).toFixed(0);
+    if (queryResponse.message == "city not found"){
+      document.querySelector(".js-favicon").setAttribute('href', `icons/unknown.png`);
+      document.querySelector(".js-icon").setAttribute('src', `icons/unknown.png`);
+      document.querySelector(".js-description").innerHTML = `This city does not exist, try another city`;      
+      document.querySelector(".js-wind").innerHTML = `Wind: 0 m/s`;
+      document.querySelector('.js-temperature').innerHTML = `0 °C`;
+      document.querySelector('.js-clouds').innerHTML = `Cloudiness: 0%`;
+      document.querySelector('.js-sunrise').innerHTML = `00:00`;
+      document.querySelector('.js-sunset').innerHTML = `00:00`;
+    }
+    else{
+      let celcius = (parseInt(queryResponse.main.temp) / 273.15).toFixed(0);
 
-    let unixSunrise = queryResponse.sys.sunrise;
-    let unixSunset = queryResponse.sys.sunset;
+      let unixSunrise = queryResponse.sys.sunrise;
+      let unixSunset = queryResponse.sys.sunset;
 
-    let sunrise = _parseMillisecondsIntoReadableTime(unixSunrise);
-    let sunset = _parseMillisecondsIntoReadableTime(unixSunset);
+      let sunrise = _parseMillisecondsIntoReadableTime(unixSunrise);
+      let sunset = _parseMillisecondsIntoReadableTime(unixSunset);
 
-    document.querySelector(".js-favicon").setAttribute('href', `icons/${queryResponse.weather[0].icon}.png`);
-    document.querySelector(".js-icon").setAttribute('src', `icons/${queryResponse.weather[0].icon}.png`);
-    document.querySelector(".js-description").innerHTML = `${queryResponse.weather[0].description}`;
-    document.querySelector(".js-wind").innerHTML = `Wind: ${queryResponse.wind.speed}m/s`;
-    document.querySelector('.js-temperature').innerHTML = `${celcius} °C`;
-    document.querySelector('.js-sunrise').innerHTML = `${sunrise}`;
-    document.querySelector('.js-sunset').innerHTML = `${sunset}`;
-    document.querySelector('.js-clouds').innerHTML = `Cloudiness: ${queryResponse.clouds.all}%`;
+      document.querySelector(".js-favicon").setAttribute('href', `icons/${queryResponse.weather[0].icon}.png`);
+      document.querySelector(".js-icon").setAttribute('src', `icons/${queryResponse.weather[0].icon}.png`);
+      document.querySelector(".js-description").innerHTML = `${queryResponse.weather[0].description}`;
+      document.querySelector(".js-wind").innerHTML = `Wind: ${queryResponse.wind.speed}m/s`;
+      document.querySelector('.js-temperature').innerHTML = `${celcius} °C`;
+      document.querySelector('.js-clouds').innerHTML = `Cloudiness: ${queryResponse.clouds.all}%`;
+      document.querySelector('.js-sunrise').innerHTML = `${sunrise}`;
+      document.querySelector('.js-sunset').innerHTML = `${sunset}`;
 
-    let timeDifference = new Date(unixSunset * 1000 - unixSunrise * 1000);
+      let timeDifference = new Date(unixSunset * 1000 - unixSunrise * 1000);
 
-    placeSunAndStartMoving(
-      (timeDifference.getHours() - 1) * 60 + timeDifference.getMinutes(),
-      unixSunrise * 1000
-    );
+      placeSunAndStartMoving(
+        (timeDifference.getHours() - 1) * 60 + timeDifference.getMinutes(),
+        unixSunrise * 1000
+      );
+    }
 };
 
 
@@ -122,7 +134,7 @@ const get = (url) => fetch(url).then((r) => r.json());
 
 document.addEventListener("DOMContentLoaded", function () {
 
-    getAPI("lichtervelde");
+    getAPI("kortrijk");
     document.querySelector('.js-search').addEventListener('click', searchCity);
 
   });
