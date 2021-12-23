@@ -1,0 +1,316 @@
+/*------------------------------------*\
+#FONTS
+\*------------------------------------*/
+
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Source+Sans+Pro:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700;1,900&display=swap');
+
+/*------------------------------------*\
+#Variables
+\*------------------------------------*/
+
+:root{
+    /* colors */
+    --global-color-neutral-black: #000;
+    --global-color-neutral-white: #FFF;
+
+    /* global page settings */
+    --global-page-color: var(--global-color-neutral-black);  
+
+    /* borders */
+
+    /* transitions */
+
+    /* baseline */
+
+    /* forms */
+
+    /* font */
+    --global-font: 'Poppins', 'Helvetica', 'sans-serif';
+
+}
+
+/*------------------------------------*\
+#GENERIC
+\*------------------------------------*/
+
+/*
+    Generic: Page
+    ---
+    Global page styles + universal box-sizing:
+*/
+
+html{
+    font-size: 100%;
+    line-height: 1.5;
+    font-family: var(--global-font);
+    color: var(--global-page-color);
+    box-sizing: border-box;
+    background-image: url("/images-onbewerkt/cesar-couto-pC2xOplxsVs-unsplash.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    background-attachment: fixed;
+    height: 100%;
+}
+
+.is-day{
+    background-image: url("/images-onbewerkt/cesar-couto-pC2xOplxsVs-unsplash.jpg");
+}
+
+.is-night{
+    background-image: url("/images/adelin-preda--tOr_T4qTpQ-unsplash.jpg");
+}
+
+body{
+    height: 100%;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/*------------------------------------*\
+#Elements
+\*------------------------------------*/
+
+/*
+Elements: Images
+---
+Default markup for images to make them responsive
+*/
+
+img {
+    width: 100%;
+}
+
+/*
+    Elements: typography
+    ---
+    Default markup for typographic elements
+*/
+
+h1{
+    font-size: 2.5rem;
+    color: var(--global-color-neutral-white);
+    text-align: center;
+    margin: 0;
+    margin: 25px 0 50px 0;
+}
+
+/*------------------------------------*\
+#OBJECTS
+\*------------------------------------*/
+
+/*
+    Objects: Container
+    ---
+    Creates a horizontal container that sets de global max-width
+*/
+
+.o-container{
+    display: grid;
+    grid-template-columns: 50% 50%;
+    margin: 0 auto;
+    width: 80rem;
+}
+
+@media screen and (max-width: 1280px){
+    .o-container{
+        width: 50rem;
+    }
+}
+
+@media screen and (max-width: 850px){
+    .o-container{
+        width: 100%;
+    }
+}
+
+/*
+    Object: Button search city
+    ---
+    Small button for submitting city search
+*/
+
+.o-search-button{
+    height: 40px;
+    border: none;
+    background: transparent;
+    color: var(--global-color-neutral-white);
+    font-size: 1.2rem;
+    cursor: pointer;
+    padding-right: 10px;
+}
+
+/*------------------------------------*\
+#COMPONENTS
+\*------------------------------------*/
+
+/*
+    Component: city
+    ---
+    Class to put on the input field for the cityname
+*/
+
+.c-searchCity{
+    grid-column-start: 1;
+    grid-column-end: 3;
+    margin: 0 0 50px 0;
+}
+
+.c-city{
+    width: 50%;
+    position: relative;
+    margin: 0 auto;
+}
+
+.c-city__input{
+    width: 100%;
+    height: 40px;
+    background: transparent;
+    border: 3px solid var(--global-color-neutral-white);
+    border-radius: 10px;
+    outline: none;
+    color: var(--global-color-neutral-white);
+    padding-left: 10px;
+    font-family: var(--global-font);
+}
+
+.c-city__input::placeholder{
+    color: var(--global-color-neutral-white);
+    opacity: .5;
+}
+
+.c-city__button{
+    position: absolute;
+    right: -15px;
+    top: 4px;
+}
+
+@media screen and (max-width: 850px){
+    .c-searchCity{
+        margin-top: 137px;
+    }
+
+    .c-city{
+        width: 70%;
+    }
+}
+
+/*
+    Component: weather
+    ---
+    Class for weather information
+*/
+
+.c-weather{
+    width: 85%;
+    margin: 0 auto;
+}
+
+.c-weather__img{
+    margin: 0 auto;
+    width: 25%;
+}
+
+.c-weather__text{
+    color: var(--global-color-neutral-white);
+    font-size: 1.3rem;
+    margin: 0;
+    margin:  25px 0 25px 0;
+}
+
+@media screen and (max-width: 850px){
+    .c-weather{
+        grid-column-start: 1;
+        grid-column-end: 3;
+    }
+
+    .c-weather__img{
+        width: 50%;
+    }
+}
+
+/*
+    Component: Horizon
+    ---
+    Horizon with sun visualisation
+*/
+
+.c-sun{
+    width: 85%;
+    margin: 0 auto
+}
+
+@media screen and (max-width: 850px){
+    .c-sun{
+        grid-column-start: 1;
+        grid-column-end: 3;
+    }
+}
+
+.c-horizon__time {
+    font-size: 12px;
+    position: absolute;
+    bottom: 0px;
+    /* left: 0; */
+    color: var(--global-color-neutral-white);
+  }
+  .c-horizon__time:last-child {
+    right: 0;
+  }
+  .c-horizon__line {
+    height: 20px;
+    border-top: 1px var(--global-color-neutral-white) solid;
+    position: relative;
+    /* margin-bottom: 20px; */
+  }
+  
+  .c-horizon__sky-wrapper {
+    position: relative;
+    height: 400px;
+    overflow: hidden;
+    padding: 22px 40px 0 0;
+  }
+  
+  .c-horizon__sky {
+    position: relative;
+    height: 100%;
+  }
+  
+  .c-horizon__sun {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    transform: translateY(22px);
+    left: var(--sun-position-left);
+    bottom: var(--sun-position-bottom);
+    fill: var(--global-color-neutral-white);
+  }
+  .c-horizon__sun::before {
+    content: attr(data-time);
+    font-size: 12px;
+    padding-bottom: 3px;
+    /* position: absolute; */
+    /* top: -20px; */
+    text-align: center;
+  }
+
+  @media screen and (max-width: 850px){
+    .c-sun{
+        margin-bottom: 100px;
+    }
+
+    .c-horizon__sky-wrapper{
+    height: 200px;
+    }
+  }
+
+/*------------------------------------*\
+#UTILITIES
+\*------------------------------------*/
+
