@@ -262,7 +262,6 @@ h1{
   }
   .c-horizon__line {
     height: 20px;
-    border-top: 1px var(--global-color-neutral-white) solid;
     position: relative;
     /* margin-bottom: 20px; */
   }
