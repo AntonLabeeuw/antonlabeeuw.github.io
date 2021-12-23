@@ -289,6 +289,7 @@ h1{
     left: var(--sun-position-left);
     bottom: var(--sun-position-bottom);
     fill: var(--global-color-neutral-white);
+    color: var(--global-color-neutral-white);
   }
   .c-horizon__sun::before {
     content: attr(data-time);
