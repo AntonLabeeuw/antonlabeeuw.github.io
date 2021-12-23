@@ -108,7 +108,7 @@ const searchCity = (e) => {
 const getAPI = async (gemeente) => {
 
   
-    const url = `http://api.openweathermap.org/data/2.5/weather?q=${gemeente}&appid=${APIkey}`;
+    const url = `https://api.openweathermap.org/data/2.5/weather?q=${gemeente}&appid=${APIkey}`;
   
 
     const weatherResponse = await get(url);
